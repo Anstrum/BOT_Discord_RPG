@@ -1,0 +1,44 @@
+{
+    "Player":{
+        "StatsPerLevel": {
+            "HP": 10,
+            "POW": 5,
+            "DEF": 5,
+            "ACC": 1,
+            "EVA": 1
+        },
+        "BaseStat": {
+            "HP": 50,
+            "POW": 10,
+            "DEF": 10,
+            "ACC": 0,
+            "EVA": 0
+        },
+        "Experience":{
+            "BaseXp": 100
+        }
+    },
+
+    "Ennemies": {
+        "Gobelin":{
+            "BaseStats": {
+                "HP": 15,
+                "POW": 5,
+                "DEF": 2,
+                "ACC": 10,
+                "EVA": 15 
+            },
+            "StatsPerLvl":{
+                "HP": 5,
+                "POW": 2,
+                "DEF": 2,
+                "ACC": 2,
+                "EVA": 2
+            }
+        }
+    },
+
+    "WorldBoss":
+    {
+    }
+}

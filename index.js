@@ -1,11 +1,9 @@
-// npx nodemon index.js
-//permet de lancer le bot a chaque save
-
 const discord = require('discord.js');
-const token = "&"
+const fs = require("fs")
+let commandList = require('./src/commandList')
+let config = JSON.parse(fs.readFileSync("./config.json"))
 const canvas = require("canvas");
 const client = new discord.Client({ intents: [discord.Intents.FLAGS.GUILDS, discord.Intents.FLAGS.GUILD_MESSAGES] });
-
 
 client.on("ready", function () {
     console.log("Up for work!");
@@ -13,16 +11,22 @@ client.on("ready", function () {
 
 
 client.on("messageCreate", function (message) {
-    if(message.author === client.user)
+    config = JSON.parse(fs.readFileSync("./config.json"))
+    if(message.content.startsWith(config.token))
     {
-        return;
-    }
-    if(message.content.startsWith(token))
-    {
-        message.reply("Oui")
+        let userMessage = message.content.split(' ')
+        let commandName = userMessage[0].substr(1, userMessage[0].length)
+        let args = userMessage.slice(1)
+        for(let myCommand of commandList)
+        {
+            if(myCommand.name === commandName)
+            {
+                myCommand.command(message, args)
+                return
+            }
+        }
     }
 })
-
 
 
 client.login("OTMzMTUyMjU1NDI1Nzc3NzQ0.YedXwg.5PabllkSHqWaK-wWMlKUKZp7NmY");
