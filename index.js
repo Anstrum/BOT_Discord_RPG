@@ -11,6 +11,10 @@ client.on("ready", function () {
 
 
 client.on("messageCreate", function (message) {
+    if(message.author == client.user)
+    {
+        return
+    }
     config = JSON.parse(fs.readFileSync("./config.json"))
     if(message.content.startsWith(config.token))
     {
@@ -27,6 +31,5 @@ client.on("messageCreate", function (message) {
         }
     }
 })
-
 
 client.login("OTMzMTUyMjU1NDI1Nzc3NzQ0.YedXwg.5PabllkSHqWaK-wWMlKUKZp7NmY");
