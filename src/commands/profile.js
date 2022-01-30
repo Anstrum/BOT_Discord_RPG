@@ -3,12 +3,24 @@ const discord = require("discord.js")
 module.exports = async (message, args) => {
     let profile = canvas.createCanvas(250, 400)
     let ctx = profile.getContext('2d')
-    let background = await canvas.loadImage("./LegendaryPlayerBack.png")
+    let background = await canvas.loadImage("./src/ressources/assets/LegendaryPlayerBack.png")
     ctx.drawImage(background, 0, 0, profile.width, profile.height)
     let playerIcon = await canvas.loadImage(message.author.displayAvatarURL({ format: 'jpg' }))
     ctx.font = 'bold 30px sans-serif';
     ctx.fillStyle = '#ffffff';
-	ctx.fillText(message.author.username, 125, 35);
+    let i = 30
+    let nameWidth = ctx.measureText(message.author.username).width
+    console.log(nameWidth)
+    while(nameWidth > 320)
+    {
+        i--
+        let text = 'bold ' + i.toString() + 'px sans-serif'
+        ctx.font = text;
+        console.log("test")
+        nameWidth = ctx.measureText(message.author.username).width
+        console.log(nameWidth)
+    }
+	ctx.fillText(message.author.displayName, 125 - nameWidth / 2, 35);
     ctx.arc(125, 145, 75, 0, 2 * Math.PI, true);
     ctx.arc(125, 145, 76, 0, 2 * Math.PI, true);
     ctx.arc(125, 145, 77, 0, 2 * Math.PI, true);
