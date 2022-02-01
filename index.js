@@ -33,4 +33,4 @@ client.on("messageCreate", function (message) {
 })
 
 
-client.login("OTMzMTUyMjU1NDI1Nzc3NzQ0.YedXwg.5PabllkSHqWaK-wWMlKUKZp7NmY");
+client.login("OTMzMTUyMjU1NDI1Nzc3NzQ0.YedXwg.wqkFBPIb5IQ1lzy55d2U_Cm6OeQ");
